@@ -1,0 +1,216 @@
+/* ================= GLOBAL ================= */
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #f1f3f4;
+  margin: 0;
+  overflow-y: auto;
+}
+
+/* ================= SIDEBAR ================= */
+
+.sidebar {
+  width: 250px;
+  background: #ffffff;
+  border-right: 1px solid #e0e0e0;
+  min-height: 100vh;
+}
+
+.sidebar .nav-link {
+  border-radius: 8px;
+  padding: 8px 12px;
+  color: #5f6368;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+  background: #e8f0fe;
+  color: #1a73e8;
+}
+
+.sidebar .nav-link.active {
+  font-weight: 600;
+}
+
+/* ================= TOPBAR ================= */
+
+.topbar {
+  background: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 14px 20px;
+  height: 70px;
+}
+
+/* ================= CARD ================= */
+
+.drive-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+}
+
+/* ================= TABLE ================= */
+
+.table {
+  margin-bottom: 0;
+}
+
+.table th,
+.table td {
+  vertical-align: middle;
+  font-size: 14px;
+}
+
+/* HEADER */
+
+.table thead th {
+  font-size: 14px;
+  color: #5f6368;
+  font-weight: 600;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: center;
+
+  position: sticky;
+  top: 0;
+  background: #f1f3f4;
+  z-index: 20;
+}
+
+/* ROW HOVER */
+
+.table tbody tr:hover {
+  background-color: #f8f9fa;
+  cursor: pointer;
+}
+
+tbody td {
+  text-align: left;
+}
+
+/* ================= STICKY COLUMNS ================= */
+
+.sticky-checkbox {
+  position: sticky;
+  left: 0;
+  background: #ffffff;
+  z-index: 15;
+  width: 50px;
+}
+
+.sticky-name {
+  position: sticky;
+  left: 50px;
+  background: #ffffff;
+  z-index: 14;
+  min-width: 260px;
+}
+
+/* ================= COLUMN WIDTHS ================= */
+
+.size-col {
+  min-width: 140px;
+  width: 140px;
+  text-align: right;
+  padding-right: 20px;
+}
+
+/* ================= STORAGE BAR ================= */
+
+.progress-bar {
+  background-color: #1a73e8;
+}
+
+/* ================= TABLE SCROLL ================= */
+
+.file-table-container {
+  height: calc(100vh - 260px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ================= SCROLLBAR ================= */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
+
+/* ================= CONTEXT MENU ================= */
+
+.react-contexify {
+  border-radius: 8px;
+  padding: 6px 0;
+  min-width: 180px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+.react-contexify__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  font-size: 14px;
+}
+
+.react-contexify__item:hover {
+  background: #f1f3f4;
+}
+.nav-link {
+  color: #5f6368;
+  border-radius: 8px;
+  padding: 8px 12px;
+  transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+  background-color: #f1f3f4;
+}
+
+.nav-link.active {
+  background-color: #e8f0fe;
+  color: #1967d2;
+  font-weight: 600;
+}
+.nav-link.active {
+  background: linear-gradient(90deg, #e8f0fe, #f5f9ff);
+  border-left: 3px solid #1967d2;
+}
+
+.sidebar {
+  background: #ffffff;
+  border-right: 1px solid #e0e0e0;
+}
+
+.nav-link {
+  color: #5f6368;
+  font-weight: 500;
+}
+
+.nav-link.active {
+  background: #e8f0fe;
+  color: #1967d2;
+  font-weight: 600;
+}
+
+.nav-link:hover {
+  background: #f1f3f4;
+}
