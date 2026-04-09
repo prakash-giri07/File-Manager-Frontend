@@ -11,30 +11,45 @@ import {
 } from "recharts";
 import { useMemo } from "react";
 
-const Charts = ({ data = [], loading }) => {
+const Charts = ({ campaigns = [], loading }) => {
     const chartData = useMemo(() => {
-        if (!Array.isArray(data)) return [];
+        if (!Array.isArray(campaigns)) return [];
 
-        return data.map((item) => ({
-            ...item,
+        return campaigns.map((item) => ({
+            name: item.name,
             spend: Number(item.spend || 0),
             clicks: Number(item.clicks || 0),
+            impressions: Number(item.impressions || 0),
         }));
-    }, [data]);
+    }, [campaigns]);
 
     const hasData = chartData.length > 0;
 
     return (
         <>
+            {/* 📈 Spend Trend */}
             <Card title="Spend Trend" className="mb-4">
                 <Spin spinning={loading}>
                     {hasData ? (
                         <ResponsiveContainer width="100%" height={300}>
                             <LineChart data={chartData}>
-                                <XAxis dataKey="campaign" />
+                                <XAxis
+                                    dataKey="name"
+                                    tick={{ fontSize: 12 }}
+                                    interval={0}
+                                    angle={-20}
+                                    textAnchor="end"
+                                />
                                 <YAxis />
-                                <Tooltip />
-                                <Line type="monotone" dataKey="spend" stroke="#1677ff" strokeWidth={2} />
+                                <Tooltip
+                                    formatter={(value) => `₹${value}`}
+                                />
+                                <Line
+                                    type="monotone"
+                                    dataKey="spend"
+                                    stroke="#1677ff"
+                                    strokeWidth={2}
+                                />
                             </LineChart>
                         </ResponsiveContainer>
                     ) : (
@@ -43,15 +58,22 @@ const Charts = ({ data = [], loading }) => {
                 </Spin>
             </Card>
 
-            <Card title="Clicks Comparison" className="mb-4">
+            {/* 📊 Impressions (better than fake clicks) */}
+            <Card title="Impressions Comparison" className="mb-4">
                 <Spin spinning={loading}>
                     {hasData ? (
                         <ResponsiveContainer width="100%" height={300}>
                             <BarChart data={chartData}>
-                                <XAxis dataKey="campaign" />
+                                <XAxis
+                                    dataKey="name"
+                                    tick={{ fontSize: 12 }}
+                                    interval={0}
+                                    angle={-20}
+                                    textAnchor="end"
+                                />
                                 <YAxis />
                                 <Tooltip />
-                                <Bar dataKey="clicks" fill="#1677ff" />
+                                <Bar dataKey="impressions" fill="#1677ff" />
                             </BarChart>
                         </ResponsiveContainer>
                     ) : (

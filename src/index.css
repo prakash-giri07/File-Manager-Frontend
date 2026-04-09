@@ -214,3 +214,8 @@ tbody td {
 .nav-link:hover {
   background: #f1f3f4;
 }
+
+.ant-pagination {
+  display: inline-flex !important;
+  width: auto !important;
+}

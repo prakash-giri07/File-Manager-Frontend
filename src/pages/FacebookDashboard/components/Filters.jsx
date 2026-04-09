@@ -4,19 +4,41 @@ import { useMemo } from "react";
 const { RangePicker } = DatePicker;
 
 const Filters = ({ onFilterChange, campaigns = [] }) => {
+    // Campaign dropdown options
     const campaignOptions = useMemo(() => {
         if (!Array.isArray(campaigns)) return [];
 
-        const unique = [...new Set(campaigns.map((c) => c.campaign).filter(Boolean))];
+        const unique = [
+            ...new Set(campaigns.map((c) => c.name).filter(Boolean)),
+        ];
 
-        return unique.map((name) => ({
-            value: name,
-            label: name,
-        }));
+        return unique
+            .sort()
+            .map((name) => ({
+                value: name,
+                label: name,
+            }));
+    }, [campaigns]);
+
+    // Account dropdown options
+    const accountOptions = useMemo(() => {
+        if (!Array.isArray(campaigns)) return [];
+
+        const unique = [
+            ...new Set(campaigns.map((c) => c.accountName).filter(Boolean)),
+        ];
+
+        return unique
+            .sort()
+            .map((name) => ({
+                value: name,
+                label: name,
+            }));
     }, [campaigns]);
 
     return (
         <Row gutter={16} className="mb-4">
+            {/* Date Filter */}
             <Col>
                 <RangePicker
                     format="YYYY-MM-DD"
@@ -37,15 +59,30 @@ const Filters = ({ onFilterChange, campaigns = [] }) => {
                 />
             </Col>
 
+            {/* account Filter */}
+            <Col>
+                <Select
+                    placeholder="Select Account"
+                    style={{ width: 260 }}
+                    allowClear
+                    showSearch
+                    optionFilterProp="label"
+                    onChange={(value) => {
+                        onFilterChange({ account: value || null });
+                    }}
+                    options={accountOptions}
+                    notFoundContent="No Accounts"
+                />
+            </Col>
+
+            {/*Campaign Filter */}
             <Col>
                 <Select
                     placeholder="Select Campaign"
-                    style={{ width: 240 }}
+                    style={{ width: 260 }}
                     allowClear
-                    showSearch={{
-                        filterOption: (input, option) =>
-                            option?.label?.toLowerCase().includes(input.toLowerCase()),
-                    }}
+                    showSearch
+                    optionFilterProp="label"
                     onChange={(value) => {
                         onFilterChange({ campaign: value || null });
                     }}
@@ -53,6 +90,7 @@ const Filters = ({ onFilterChange, campaigns = [] }) => {
                     notFoundContent="No campaigns"
                 />
             </Col>
+
         </Row>
     );
 };

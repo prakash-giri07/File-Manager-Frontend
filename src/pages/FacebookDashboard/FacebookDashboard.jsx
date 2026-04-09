@@ -12,6 +12,7 @@ import { getCampaigns, getKPI } from "../../services/facebookService";
 const FacebookDashboard = () => {
     const [filters, setFilters] = useState({});
 
+    // ================= CAMPAIGNS =================
     const {
         data: campaigns = [],
         isLoading: campaignsLoading,
@@ -20,7 +21,6 @@ const FacebookDashboard = () => {
     } = useQuery({
         queryKey: ["campaigns", filters],
         queryFn: () => getCampaigns(filters),
-
         cacheTime: 0,
         staleTime: 0,
         refetchOnMount: "always",
@@ -29,6 +29,7 @@ const FacebookDashboard = () => {
         keepPreviousData: false,
     });
 
+    // ================= KPI =================
     const {
         data: kpi = {},
         isLoading: kpiLoading,
@@ -37,7 +38,6 @@ const FacebookDashboard = () => {
     } = useQuery({
         queryKey: ["kpi", filters],
         queryFn: () => getKPI(filters),
-
         cacheTime: 0,
         staleTime: 0,
         refetchOnMount: "always",
@@ -52,6 +52,7 @@ const FacebookDashboard = () => {
         setFilters((prev) => ({ ...prev, ...newFilter }));
     };
 
+    // ================= ERROR =================
     if (campaignsError || kpiError) {
         return (
             <div className="p-4">
@@ -62,7 +63,7 @@ const FacebookDashboard = () => {
     }
 
     return (
-        <div className="p-4">
+        <div>
             <h2 className="mb-4">Facebook Campaign Dashboard</h2>
 
             <Filters
@@ -71,7 +72,7 @@ const FacebookDashboard = () => {
             />
 
             {loading ? (
-                <div className="d-flex justify-content-center mt-5">
+                <div className="flex justify-center mt-5">
                     <Spin size="large" />
                 </div>
             ) : (
@@ -82,15 +83,15 @@ const FacebookDashboard = () => {
                         </div>
                     )}
 
-                    <KPIcards data={kpi} loading={loading} />
+                    <KPIcards kpi={kpi} loading={loading} />
 
-                    {campaigns.length > 0 ? (
-                        <Charts data={campaigns} loading={loading} />
+                    {/* {campaigns.length > 0 ? (
+                        <Charts campaigns={campaigns} loading={loading} />
                     ) : (
                         <Empty description="No campaign data" />
-                    )}
+                    )} */}
 
-                    <CampaignTable data={campaigns} loading={loading} />
+                    <CampaignTable campaigns={campaigns} loading={loading} />
                 </>
             )}
         </div>

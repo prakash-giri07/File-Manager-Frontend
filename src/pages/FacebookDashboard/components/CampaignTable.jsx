@@ -1,26 +1,32 @@
 import { Table, Pagination, Spin, Empty } from "antd";
 import { useState, useMemo, useEffect } from "react";
 
-const CampaignTable = ({ data = [], loading }) => {
+const CampaignTable = ({ campaigns = [], loading }) => {
     const [page, setPage] = useState(1);
     const [pageSize, setPageSize] = useState(10);
 
     useEffect(() => {
         setPage(1);
-    }, [data]);
+    }, [campaigns]);
 
     const paginatedData = useMemo(() => {
-        if (!Array.isArray(data)) return [];
+        if (!Array.isArray(campaigns)) return [];
 
         const start = (page - 1) * pageSize;
-        return data.slice(start, start + pageSize);
-    }, [data, page, pageSize]);
+        return campaigns.slice(start, start + pageSize);
+    }, [campaigns, page, pageSize]);
 
     const columns = [
         {
+            title: "Account",
+            dataIndex: "accountName",
+            key: "accountName",
+            ellipsis: true,
+        },
+        {
             title: "Campaign",
-            dataIndex: "campaign",
-            key: "campaign",
+            dataIndex: "name",
+            key: "name",
             ellipsis: true,
         },
         {
@@ -28,15 +34,24 @@ const CampaignTable = ({ data = [], loading }) => {
             dataIndex: "spend",
             key: "spend",
             align: "center",
-            sorter: (a, b) => a.spend - b.spend,
+            sorter: (a, b) => (a.spend || 0) - (b.spend || 0),
             render: (val) => `₹${Number(val || 0).toLocaleString()}`,
+        },
+        {
+            title: "Impressions",
+            dataIndex: "impressions",
+            key: "impressions",
+            align: "center",
+            sorter: (a, b) => (a.impressions || 0) - (b.impressions || 0),
+            render: (val) => Number(val || 0).toLocaleString(),
         },
         {
             title: "Clicks",
             dataIndex: "clicks",
             key: "clicks",
             align: "center",
-            sorter: (a, b) => a.clicks - b.clicks,
+            sorter: (a, b) => (a.clicks || 0) - (b.clicks || 0),
+            render: (val) => Number(val || 0),
         },
         {
             title: "CTR (%)",
@@ -52,17 +67,10 @@ const CampaignTable = ({ data = [], loading }) => {
             align: "center",
             render: (val) => `₹${Number(val || 0).toFixed(2)}`,
         },
-        {
-            title: "Date",
-            dataIndex: "date",
-            key: "date",
-            align: "center",
-            sorter: (a, b) => new Date(a.date) - new Date(b.date),
-        },
     ];
 
     return (
-        <div className="rounded-lg p-4 shadow-sm bg-white">
+        <div className="rounded-lg p-4 shadow-sm bg-white text-nowrap">
             <Spin spinning={loading}>
                 <Table
                     size="small"
@@ -71,30 +79,36 @@ const CampaignTable = ({ data = [], loading }) => {
                     dataSource={paginatedData}
                     pagination={false}
                     locale={{
-                        emptyText: loading ? "Loading..." : <Empty description="No campaign data available" />,
+                        emptyText: loading ? (
+                            "Loading..."
+                        ) : (
+                            <Empty description="No campaign data available" />
+                        ),
                     }}
                 />
 
-                {/* Pagination */}
-                <div className="d-flex justify-content-between align-items-center mt-3">
-                    <Pagination
-                        current={page}
-                        pageSize={pageSize}
-                        total={data.length}
-                        showSizeChanger
-                        showQuickJumper
-                        size="small"
-                        onChange={(p, s) => {
-                            setPage(p);
-                            setPageSize(s);
-                        }}
-                    />
-
-                    <div style={{ fontSize: "13px", color: "#666" }}>
-                        {data.length === 0
-                            ? "0 records"
-                            : `${Math.min(page * pageSize, data.length)} of ${data.length} records`}
+                <div className="mt-3 d-flex align-items-center justify-content-between  w-full flex-nowrap">
+                    <div className="inline-flex">
+                        <Pagination
+                            current={page}
+                            pageSize={pageSize}
+                            total={campaigns.length}
+                            showSizeChanger
+                            showQuickJumper
+                            size="small"
+                            onChange={(p, s) => {
+                                setPage(p);
+                                setPageSize(s);
+                            }}
+                        />
                     </div>
+
+                    <div className="ml-auto text-sm text-black whitespace-nowrap">
+                        {campaigns.length === 0
+                            ? "0 records"
+                            : `${Math.min(page * pageSize, campaigns.length)} of ${campaigns.length} records`}
+                    </div>
+
                 </div>
             </Spin>
         </div>

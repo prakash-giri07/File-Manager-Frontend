@@ -1,50 +1,72 @@
 import { Card, Row, Col, Skeleton } from "antd";
 
-const KPIcards = ({ data = {}, loading }) => {
-    const isLoading = loading || !data || Object.keys(data).length === 0;
+const KPIcards = ({ kpi = {}, loading }) => {
+    const isLoading =
+        loading || !kpi || Object.keys(kpi).length === 0;
 
-    const formatCurrency = (val) => `₹${Number(val || 0).toLocaleString()}`;
-    const formatNumber = (val) => Number(val || 0).toLocaleString();
-    const formatPercent = (val) => `${Number(val || 0).toFixed(2)}%`;
+    // 🎯 format helpers
+    const formatCurrency = (val) =>
+        `₹${Number(val || 0).toLocaleString()}`;
+
+    const formatNumber = (val) =>
+        Number(val || 0).toLocaleString();
+
+    const formatPercent = (val) =>
+        `${Number(val || 0).toFixed(2)}%`;
 
     return (
         <Row gutter={16} className="mb-4">
-            <Col span={6}>
+            {/* 💰 Spend */}
+            <Col span={4}>
                 <Card title="Spend">
                     {isLoading ? (
                         <Skeleton active paragraph={false} />
                     ) : (
-                        formatCurrency(data.spend)
+                        formatCurrency(kpi.spend)
                     )}
                 </Card>
             </Col>
 
-            <Col span={6}>
+            {/* 👁️ Impressions (REAL DATA) */}
+            <Col span={4}>
+                <Card title="Impressions">
+                    {isLoading ? (
+                        <Skeleton active paragraph={false} />
+                    ) : (
+                        formatNumber(kpi.impressions)
+                    )}
+                </Card>
+            </Col>
+
+            {/* 🖱️ Clicks (future-ready) */}
+            <Col span={4}>
                 <Card title="Clicks">
                     {isLoading ? (
                         <Skeleton active paragraph={false} />
                     ) : (
-                        formatNumber(data.clicks)
+                        formatNumber(kpi.clicks)
                     )}
                 </Card>
             </Col>
 
-            <Col span={6}>
+            {/* 📊 CTR */}
+            <Col span={4}>
                 <Card title="CTR">
                     {isLoading ? (
                         <Skeleton active paragraph={false} />
                     ) : (
-                        formatPercent(data.ctr)
+                        formatPercent(kpi.ctr)
                     )}
                 </Card>
             </Col>
 
-            <Col span={6}>
+            {/* 💸 CPC */}
+            <Col span={4}>
                 <Card title="CPC">
                     {isLoading ? (
                         <Skeleton active paragraph={false} />
                     ) : (
-                        formatCurrency(data.cpc)
+                        formatCurrency(kpi.cpc)
                     )}
                 </Card>
             </Col>
