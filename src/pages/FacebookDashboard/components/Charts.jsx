@@ -12,27 +12,53 @@ import {
 import { useMemo } from "react";
 
 const Charts = ({ campaigns = [], loading }) => {
-    const chartData = useMemo(() => {
+
+    const groupedData = useMemo(() => {
         if (!Array.isArray(campaigns)) return [];
 
-        return campaigns.map((item) => ({
-            name: item.name,
-            spend: Number(item.spend || 0),
-            clicks: Number(item.clicks || 0),
-            impressions: Number(item.impressions || 0),
-        }));
+        const grouped = campaigns.reduce((acc, item) => {
+            const key = item.accountName || "Unknown";
+
+            if (!acc[key]) {
+                acc[key] = {
+                    name: key,
+                    spend: 0,
+                    clicks: 0,
+                    impressions: 0,
+                };
+            }
+
+            acc[key].spend += Number(item.spend || 0);
+            acc[key].clicks += Number(item.clicks || 0);
+            acc[key].impressions += Number(item.impressions || 0);
+
+            return acc;
+        }, {});
+
+        return Object.values(grouped);
     }, [campaigns]);
 
-    const hasData = chartData.length > 0;
+    const spendData = useMemo(() => {
+        return [...groupedData].sort((a, b) => b.spend - a.spend);
+    }, [groupedData]);
+
+    const impressionData = useMemo(() => {
+        return [...groupedData].sort((a, b) => b.impressions - a.impressions);
+    }, [groupedData]);
+
+    const hasData = groupedData && groupedData.length > 0;
 
     return (
         <>
-            {/* 📈 Spend Trend */}
+            {/* Spend Trend */}
             <Card title="Spend Trend" className="mb-4">
                 <Spin spinning={loading}>
                     {hasData ? (
-                        <ResponsiveContainer width="100%" height={300}>
-                            <LineChart data={chartData}>
+                        <ResponsiveContainer width="100%" height={400}>
+                            <LineChart
+                                data={spendData}
+                                margin={{ top: 20, right: 30, left: 40, bottom: 80 }}
+                            >
                                 <XAxis
                                     dataKey="name"
                                     tick={{ fontSize: 12 }}
@@ -41,9 +67,7 @@ const Charts = ({ campaigns = [], loading }) => {
                                     textAnchor="end"
                                 />
                                 <YAxis />
-                                <Tooltip
-                                    formatter={(value) => `₹${value}`}
-                                />
+                                <Tooltip formatter={(value) => `₹${value}`} />
                                 <Line
                                     type="monotone"
                                     dataKey="spend"
@@ -58,12 +82,15 @@ const Charts = ({ campaigns = [], loading }) => {
                 </Spin>
             </Card>
 
-            {/* 📊 Impressions (better than fake clicks) */}
+            {/* Impressions */}
             <Card title="Impressions Comparison" className="mb-4">
                 <Spin spinning={loading}>
                     {hasData ? (
-                        <ResponsiveContainer width="100%" height={300}>
-                            <BarChart data={chartData}>
+                        <ResponsiveContainer width="100%" height={400}>
+                            <BarChart
+                                data={impressionData}
+                                margin={{ top: 20, right: 30, left: 40, bottom: 80 }}
+                            >
                                 <XAxis
                                     dataKey="name"
                                     tick={{ fontSize: 12 }}

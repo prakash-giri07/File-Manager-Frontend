@@ -1,5 +1,9 @@
 import axios from "axios";
 import { facebookDummyData } from "../mock/facebookDummyData";
+import dayjs from "dayjs";
+import isBetween from "dayjs/plugin/isBetween";
+
+dayjs.extend(isBetween);
 
 //  Toggle (switch to false when API is ready)
 const USE_DUMMY = true;
@@ -93,11 +97,36 @@ export const getCampaigns = async (filters = {}) => {
 
       let campaigns = normalizeCampaigns(facebookDummyData);
 
-      //  filter by name
-      if (filters.campaign) {
-        campaigns = campaigns.filter((c) =>
-          c.name.toLowerCase().includes(filters.campaign.toLowerCase()),
-        );
+      // account filter
+      if (filters.account && filters.account.length) {
+        const accounts = Array.isArray(filters.account)
+          ? filters.account
+          : [filters.account];
+
+        campaigns = campaigns.filter((c) => accounts.includes(c.accountName));
+      }
+
+      // campaign filter
+      if (filters.campaign && filters.campaign.length) {
+        const campaignsFilter = Array.isArray(filters.campaign)
+          ? filters.campaign
+          : [filters.campaign];
+
+        campaigns = campaigns.filter((c) => campaignsFilter.includes(c.name));
+      }
+
+      // DATE FILTER
+      if (filters.startDate && filters.endDate) {
+        campaigns = campaigns.filter((c) => {
+          if (!c.date) return false;
+
+          return dayjs(c.date).isBetween(
+            dayjs(filters.startDate),
+            dayjs(filters.endDate),
+            "day",
+            "[]",
+          );
+        });
       }
 
       return campaigns;

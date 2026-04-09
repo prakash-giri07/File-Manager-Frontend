@@ -219,3 +219,45 @@ tbody td {
   display: inline-flex !important;
   width: auto !important;
 }
+
+/* custom css for kpi cards */
+:root {
+  --gapTomainTain: 15px;
+}
+
+.customRow {
+  display: flex;
+  width: 100%;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: var(--gapTomainTain);
+}
+.cardCustom {
+  width: calc(100% / 5 - var(--gapTomainTain));
+}
+
+@media screen and (max-width: 1200px) {
+  .cardCustom {
+    width: calc(100% / 5 - var(--gapTomainTain));
+  }
+}
+@media screen and (max-width: 1100px) {
+  .cardCustom {
+    width: calc(100% / 4 - var(--gapTomainTain));
+  }
+}
+@media screen and (max-width: 900px) {
+  .cardCustom {
+    width: calc(100% / 3 - var(--gapTomainTain));
+  }
+}
+@media screen and (max-width: 700px) {
+  .cardCustom {
+    width: calc(100% / 2 - var(--gapTomainTain));
+  }
+}
+@media screen and (max-width: 550px) {
+  .cardCustom {
+    width: calc(100% / 1 - var(--gapTomainTain));
+  }
+}

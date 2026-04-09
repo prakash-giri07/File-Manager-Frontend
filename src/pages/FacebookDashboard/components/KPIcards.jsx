@@ -4,7 +4,7 @@ const KPIcards = ({ kpi = {}, loading }) => {
     const isLoading =
         loading || !kpi || Object.keys(kpi).length === 0;
 
-    // 🎯 format helpers
+    // format helpers
     const formatCurrency = (val) =>
         `₹${Number(val || 0).toLocaleString()}`;
 
@@ -15,62 +15,39 @@ const KPIcards = ({ kpi = {}, loading }) => {
         `${Number(val || 0).toFixed(2)}%`;
 
     return (
-        <Row gutter={16} className="mb-4">
-            {/* 💰 Spend */}
-            <Col span={4}>
-                <Card title="Spend">
-                    {isLoading ? (
-                        <Skeleton active paragraph={false} />
-                    ) : (
-                        formatCurrency(kpi.spend)
-                    )}
-                </Card>
-            </Col>
+        <div className="d-flex w-100">
+            <div className="customRow">
+                <div className="cardCustom">
+                    <Card title="Spend" classNames="w-100">
+                        {isLoading ? <Skeleton active paragraph={false} /> : formatCurrency(kpi.spend)}
+                    </Card>
+                </div>
 
-            {/* 👁️ Impressions (REAL DATA) */}
-            <Col span={4}>
-                <Card title="Impressions">
-                    {isLoading ? (
-                        <Skeleton active paragraph={false} />
-                    ) : (
-                        formatNumber(kpi.impressions)
-                    )}
-                </Card>
-            </Col>
+                <div className="cardCustom">
+                    <Card title="Impressions" classNames="w-100">
+                        {isLoading ? <Skeleton active paragraph={false} /> : formatNumber(kpi.impressions)}
+                    </Card>
+                </div>
 
-            {/* 🖱️ Clicks (future-ready) */}
-            <Col span={4}>
-                <Card title="Clicks">
-                    {isLoading ? (
-                        <Skeleton active paragraph={false} />
-                    ) : (
-                        formatNumber(kpi.clicks)
-                    )}
-                </Card>
-            </Col>
+                <div className="cardCustom">
+                    <Card title="Clicks" classNames="w-100">
+                        {isLoading ? <Skeleton active paragraph={false} /> : formatNumber(kpi.clicks)}
+                    </Card>
+                </div>
 
-            {/* 📊 CTR */}
-            <Col span={4}>
-                <Card title="CTR">
-                    {isLoading ? (
-                        <Skeleton active paragraph={false} />
-                    ) : (
-                        formatPercent(kpi.ctr)
-                    )}
-                </Card>
-            </Col>
+                <div className="cardCustom">
+                    <Card title="CTR" classNames="w-100">
+                        {isLoading ? <Skeleton active paragraph={false} /> : formatPercent(kpi.ctr)}
+                    </Card>
+                </div>
 
-            {/* 💸 CPC */}
-            <Col span={4}>
-                <Card title="CPC">
-                    {isLoading ? (
-                        <Skeleton active paragraph={false} />
-                    ) : (
-                        formatCurrency(kpi.cpc)
-                    )}
-                </Card>
-            </Col>
-        </Row>
+                <div className="cardCustom">
+                    <Card title="CPC" classNames="w-100">
+                        {isLoading ? <Skeleton active paragraph={false} /> : formatCurrency(kpi.cpc)}
+                    </Card>
+                </div>
+            </div>
+        </div>
     );
 };
 
