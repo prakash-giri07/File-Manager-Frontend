@@ -57,29 +57,6 @@ const Filters = ({ onFilterChange, campaigns = [], filters = {} }) => {
         <Row gutter={16} className="mb-4">
 
             <Col>
-                <RangePicker
-                    format="YYYY-MM-DD"
-                    presets={presets}
-                    value={
-                        filters.startDate && filters.endDate
-                            ? [dayjs(filters.startDate), dayjs(filters.endDate)]
-                            : null
-                    }
-                    onChange={(dates) => {
-                        if (!dates) {
-                            handleReset();
-                            return;
-                        }
-
-                        onFilterChange({
-                            startDate: dates[0].format("YYYY-MM-DD"),
-                            endDate: dates[1].format("YYYY-MM-DD"),
-                        });
-                    }}
-                />
-            </Col>
-
-            <Col>
                 <Select
                     mode="multiple"
                     placeholder="Select Account"
@@ -110,6 +87,29 @@ const Filters = ({ onFilterChange, campaigns = [], filters = {} }) => {
                         });
                     }}
                     options={campaignOptions}
+                />
+            </Col>
+
+            <Col>
+                <RangePicker
+                    format="YYYY-MM-DD"
+                    presets={presets}
+                    value={
+                        filters.startDate && filters.endDate
+                            ? [dayjs(filters.startDate), dayjs(filters.endDate)]
+                            : null
+                    }
+                    onChange={(dates) => {
+                        if (!dates) {
+                            handleReset();
+                            return;
+                        }
+
+                        onFilterChange({
+                            startDate: dates[0].format("YYYY-MM-DD"),
+                            endDate: dates[1].format("YYYY-MM-DD"),
+                        });
+                    }}
                 />
             </Col>
 
