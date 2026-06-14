@@ -25,9 +25,16 @@ export default function Navbar() {
                             style={{ textDecoration: "none" }}
                         >
                             <div
-                                className="h-12 w-12 rounded-xl bg-blue-600 text-white flex items-center justify-center"
+                                className="
+                                 h-12 w-12
+                                 rounded-2xl
+                                 bg-blue-600
+                                 flex
+                                 items-center
+                                 justify-center
+                             "
                             >
-                                <CloudUploadOutlined className="text-[25px]" />
+                                <CloudUploadOutlined className="text-white text-2xl" />
                             </div>
 
                             <div className="no-underline">
