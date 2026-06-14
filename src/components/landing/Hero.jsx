@@ -68,7 +68,7 @@ export default function Hero() {
                         {/* Feature Pills */}
                         <div className="mt-10 flex flex-wrap gap-3 justify-center w-full">
 
-                            <div className="flex items-center gap-3 rounded-xl border border-white/70 bg-gradient-to-r from-white/80 via-blue-50/80 to-indigo-50/80 backdrop-blur-md px-5 py-3 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                            <div className="cursor-pointer flex items-center gap-3 rounded-xl border border-white/70 bg-gradient-to-r from-white/80 via-blue-50/80 to-indigo-50/80 backdrop-blur-md px-5 py-3 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
                                 <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-100">
                                     <CloudUploadOutlined className="text-blue-600" />
                                 </div>
@@ -78,7 +78,7 @@ export default function Hero() {
                                 </span>
                             </div>
 
-                            <div className="flex items-center gap-3 rounded-xl border border-white/70 bg-gradient-to-r from-white/80 via-blue-50/80 to-indigo-50/80 backdrop-blur-md px-5 py-3 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                            <div className="cursor-pointer flex items-center gap-3 rounded-xl border border-white/70 bg-gradient-to-r from-white/80 via-blue-50/80 to-indigo-50/80 backdrop-blur-md px-5 py-3 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
                                 <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-100">
                                     <SafetyCertificateOutlined className="text-emerald-600" />
                                 </div>
@@ -88,7 +88,7 @@ export default function Hero() {
                                 </span>
                             </div>
 
-                            <div className="flex items-center gap-3 rounded-xl border border-white/70 bg-gradient-to-r from-white/80 via-blue-50/80 to-indigo-50/80 backdrop-blur-md px-5 py-3 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                            <div className="cursor-pointer flex items-center gap-3 rounded-xl border border-white/70 bg-gradient-to-r from-white/80 via-blue-50/80 to-indigo-50/80 backdrop-blur-md px-5 py-3 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
                                 <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-violet-100">
                                     <FolderOpenOutlined className="text-violet-600" />
                                 </div>

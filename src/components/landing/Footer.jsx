@@ -28,9 +28,9 @@ export default function Footer() {
                         </div>
 
                         <div className="no-underline">
-                            <h2 className="m-0 text-lg font-bold text-slate-900 no-underline">
+                            <h4 className="m-0 text-lg font-bold text-slate-900 no-underline">
                                 File Manager
-                            </h2>
+                            </h4>
                             <p className="m-0 text-xs text-slate-500 hidden sm:block">
                                 Cloud Storage Platform
                             </p>

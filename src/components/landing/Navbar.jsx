@@ -31,9 +31,9 @@ export default function Navbar() {
                             </div>
 
                             <div className="no-underline">
-                                <h2 className="m-0 text-lg font-bold text-slate-900 no-underline">
+                                <h4 className="m-0 text-lg font-bold text-slate-900 no-underline">
                                     File Manager
-                                </h2>
+                                </h4>
                                 <p className="m-0 text-xs text-slate-500 hidden sm:block">
                                     Cloud Storage Platform
                                 </p>
@@ -42,37 +42,45 @@ export default function Navbar() {
 
                         {/* Desktop Nav */}
                         <nav className="hidden lg:flex items-center gap-10">
-                            <a
+                            <Link
+                                to="/"
+                                className="text-slate-600 hover:text-blue-600 transition no-underline font-medium"
+                                style={{ textDecoration: "none" }}
+                            >
+                                Home
+                            </Link>
+
+                            <Link
                                 href="#features"
                                 className="text-slate-600 hover:text-blue-600 transition no-underline font-medium"
                                 style={{ textDecoration: "none" }}
                             >
                                 Features
-                            </a>
+                            </Link>
 
-                            <a
+                            <Link
                                 href="#pricing"
                                 className="text-slate-600 hover:text-blue-600 transition no-underline font-medium"
                                 style={{ textDecoration: "none" }}
                             >
                                 Pricing
-                            </a>
+                            </Link>
 
-                            <a
+                            <Link
                                 href="#faq"
                                 className="text-slate-600 hover:text-blue-600 transition no-underline font-medium"
                                 style={{ textDecoration: "none" }}
                             >
                                 FAQ
-                            </a>
+                            </Link>
 
-                            <a
+                            <Link
                                 href="#contact"
                                 className="text-slate-600 hover:text-blue-600 transition no-underline font-medium"
                                 style={{ textDecoration: "none" }}
                             >
                                 Contact
-                            </a>
+                            </Link>
                         </nav>
 
                         {/* Desktop CTA */}
@@ -124,37 +132,45 @@ export default function Navbar() {
             >
                 <div className="flex flex-col gap-5">
 
-                    <a
+                    <Link
+                        to="/"
+                        onClick={() => setOpen(false)}
+                        className="text-slate-700 no-underline"
+                    >
+                        Home
+                    </Link>
+
+                    <Link
                         href="#features"
                         onClick={() => setOpen(false)}
                         className="text-slate-700 no-underline"
                     >
                         Features
-                    </a>
+                    </Link>
 
-                    <a
+                    <Link
                         href="#pricing"
                         onClick={() => setOpen(false)}
                         className="text-slate-700 no-underline"
                     >
                         Pricing
-                    </a>
+                    </Link>
 
-                    <a
+                    <Link
                         href="#faq"
                         onClick={() => setOpen(false)}
                         className="text-slate-700 no-underline"
                     >
                         FAQ
-                    </a>
+                    </Link>
 
-                    <a
+                    <Link
                         href="#contact"
                         onClick={() => setOpen(false)}
                         className="text-slate-700 no-underline"
                     >
                         Contact
-                    </a>
+                    </Link>
 
                     <div className="border-t pt-5 flex flex-col gap-3">
                         <Link to="/login">
