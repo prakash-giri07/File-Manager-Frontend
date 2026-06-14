@@ -1,41 +1,180 @@
-import { Button } from "antd";
+import { Button, Drawer } from "antd";
+import { MenuOutlined, CloudUploadOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export default function Navbar() {
+    const [open, setOpen] = useState(false);
+
     return (
-        <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
-            <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 h-20 flex items-center justify-between">
+        <>
+            <header
+                className="
+                sticky top-0 z-50
+                bg-white/80
+                backdrop-blur-xl
+                border-b border-slate-200
+                "
+            >
+                <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="h-20 flex items-center justify-between">
 
-                {/* Logo */}
-                <Link to="/" className="no-underline">
-                    <div className="text-3xl font-bold text-blue-600">
-                        File Manager
+                        <Link
+                            to="/"
+                            className="flex items-center gap-3 no-underline hover:no-underline"
+                            style={{ textDecoration: "none" }}
+                        >
+                            <div
+                                className="h-12 w-12 rounded-xl bg-blue-600 text-white flex items-center justify-center"
+                            >
+                                <CloudUploadOutlined className="text-[25px]" />
+                            </div>
+
+                            <div className="no-underline">
+                                <h2 className="m-0 text-lg font-bold text-slate-900 no-underline">
+                                    File Manager
+                                </h2>
+                                <p className="m-0 text-xs text-slate-500 hidden sm:block">
+                                    Cloud Storage Platform
+                                </p>
+                            </div>
+                        </Link>
+
+                        {/* Desktop Nav */}
+                        <nav className="hidden lg:flex items-center gap-10">
+                            <a
+                                href="#features"
+                                className="text-slate-600 hover:text-blue-600 transition no-underline font-medium"
+                                style={{ textDecoration: "none" }}
+                            >
+                                Features
+                            </a>
+
+                            <a
+                                href="#pricing"
+                                className="text-slate-600 hover:text-blue-600 transition no-underline font-medium"
+                                style={{ textDecoration: "none" }}
+                            >
+                                Pricing
+                            </a>
+
+                            <a
+                                href="#faq"
+                                className="text-slate-600 hover:text-blue-600 transition no-underline font-medium"
+                                style={{ textDecoration: "none" }}
+                            >
+                                FAQ
+                            </a>
+
+                            <a
+                                href="#contact"
+                                className="text-slate-600 hover:text-blue-600 transition no-underline font-medium"
+                                style={{ textDecoration: "none" }}
+                            >
+                                Contact
+                            </a>
+                        </nav>
+
+                        {/* Desktop CTA */}
+                        <div className="hidden lg:flex items-center gap-2">
+                            <Link to="/login">
+                                <Button
+                                    type="text"
+                                    size="large"
+                                    className="!font-medium"
+                                >
+                                    Login
+                                </Button>
+                            </Link>
+
+                            <Link to="/signup">
+                                <Button
+                                    type="primary"
+                                    size="large"
+                                    className="
+                                    !h-11
+                                    !px-6
+                                    !rounded-xl
+                                    !font-medium
+                                    "
+                                >
+                                    Sign Up Free
+                                </Button>
+                            </Link>
+                        </div>
+
+                        {/* Mobile Menu Button */}
+                        <Button
+                            type="text"
+                            icon={<MenuOutlined />}
+                            className="lg:!hidden"
+                            onClick={() => setOpen(true)}
+                        />
                     </div>
-                </Link>
+                </div>
+            </header>
 
-                {/* Nav Links */}
-                <nav className="hidden md:flex items-center gap-10">
-                    <a href="#features" className="text-slate-600 hover:text-blue-600 transition-colors duration-200 no-underline">
+            {/* Mobile Drawer */}
+            <Drawer
+                placement="right"
+                open={open}
+                onClose={() => setOpen(false)}
+                width={280}
+                title="File Manager"
+            >
+                <div className="flex flex-col gap-5">
+
+                    <a
+                        href="#features"
+                        onClick={() => setOpen(false)}
+                        className="text-slate-700 no-underline"
+                    >
                         Features
                     </a>
 
-                    <a href="#pricing" className="text-slate-600 hover:text-blue-600 transition-colors duration-200 no-underline">
+                    <a
+                        href="#pricing"
+                        onClick={() => setOpen(false)}
+                        className="text-slate-700 no-underline"
+                    >
                         Pricing
                     </a>
 
-                    <a href="#faq" className="text-slate-600 hover:text-blue-600 transition-colors duration-200 no-underline">
+                    <a
+                        href="#faq"
+                        onClick={() => setOpen(false)}
+                        className="text-slate-700 no-underline"
+                    >
                         FAQ
                     </a>
-                </nav>
 
-                {/* CTA */}
-                <Link to="/dashboard">
-                    <Button type="primary" size="large" className="!h-11 !px-6 !rounded-xl">
-                        Get Started
-                    </Button>
-                </Link>
+                    <a
+                        href="#contact"
+                        onClick={() => setOpen(false)}
+                        className="text-slate-700 no-underline"
+                    >
+                        Contact
+                    </a>
 
-            </div>
-        </header>
+                    <div className="border-t pt-5 flex flex-col gap-3">
+                        <Link to="/login">
+                            <Button block size="large">
+                                Login
+                            </Button>
+                        </Link>
+
+                        <Link to="/signup">
+                            <Button
+                                block
+                                type="primary"
+                                size="large"
+                            >
+                                Sign Up Free
+                            </Button>
+                        </Link>
+                    </div>
+                </div>
+            </Drawer>
+        </>
     );
 }

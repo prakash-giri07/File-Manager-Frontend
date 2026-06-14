@@ -15,99 +15,90 @@ export default function Hero() {
             <div className="absolute top-0 left-0 h-96 w-96 rounded-full bg-blue-300/20 blur-3xl" />
             <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-indigo-300/20 blur-3xl" />
 
-            <div className="relative max-w-[1600px] mx-auto w-full px-4 sm:px-6 lg:px-8 xl:px-12 py-12 lg:py-20">
+            <div className="relative max-w-full mx-auto w-full px-4 sm:px-6 lg:px-8 xl:px-12 py-12 lg:py-20">
 
-                <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] items-center gap-12 xl:gap-20">
+                <div className="grid grid-cols-1 xl:grid-cols-[1.15fr_0.85fr] items-center gap-12 xl:gap-10">
 
                     {/* LEFT SIDE */}
-                    <div className="text-center lg:text-left">
+                    <div className="flex flex-col justify-center items-center text-center max-w-4xl mx-auto">
 
-                        <div className="inline-flex items-center gap-2 rounded-full border border-green-200 bg-green-50 px-4 py-2 text-green-700 text-sm font-medium">
-                            Secure. Reliable. Always with you.
-                        </div>
-
-                        <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-slate-900">
-                            Your Files.
-                            <br />
-                            <span className="text-blue-600">
-                                Organized.
+                        {/* Heading */}
+                        <h1 className="mt-6 font-bold leading-[0.95] tracking-tight text-slate-900">
+                            <span className="block text-5xl sm:text-6xl lg:text-7xl">
+                                Your Files
                             </span>
-                            <br />
-                            Accessible.
+
+                            <span className="block text-blue-600 text-6xl sm:text-7xl lg:text-8xl">
+                                Organized
+                            </span>
+
+                            <span className="block text-5xl sm:text-6xl lg:text-7xl">
+                                Accessible
+                            </span>
                         </h1>
 
-                        <p className="mt-6 text-base sm:text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0">
-                            Store, organize and access your files from anywhere. Fast, secure and built for everyone. Upload, manage and share files effortlessly with a modern cloud-first experience.
+                        {/* Description */}
+                        <p className="mt-6 text-lg text-slate-600 leading-relaxed">
+                            Store, organize and access your files from anywhere.
+                            Upload, manage and share files effortlessly with a
+                            modern cloud-first experience built for speed and security.
                         </p>
 
-                        {/* CTA BUTTONS */}
-                        <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        {/* CTA */}
+                        <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
 
                             <Link to="/dashboard">
-                                <Button type="primary" size="large" className="!h-12 !px-8 !rounded-xl">
+                                <Button
+                                    type="primary"
+                                    size="large"
+                                    className="!h-12 !px-8 !rounded-xl"
+                                >
                                     Get Started Free
                                 </Button>
                             </Link>
 
-                            <Button size="large" className="!h-12 !px-8 !rounded-xl">
+                            <Button
+                                size="large"
+                                className="!h-12 !px-8 !rounded-xl"
+                            >
                                 Watch Demo
                             </Button>
 
                         </div>
+                        {/* Feature Pills */}
+                        <div className="mt-10 flex flex-wrap gap-3 justify-center w-full">
 
-                        {/* FEATURES */}
-                <div className="mt-12 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-
-                            <div className="flex items-center gap-4 rounded-2xl bg-white/90 backdrop-blur-sm border border-slate-200 p-5 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                                <div className="h-12 w-12 rounded-xl bg-blue-100 flex items-center justify-center shrink-0">
-                                    <CloudUploadOutlined className="text-[22px] leading-none text-blue-600" />
+                            <div className="flex items-center gap-3 rounded-xl border border-white/70 bg-gradient-to-r from-white/80 via-blue-50/80 to-indigo-50/80 backdrop-blur-md px-5 py-3 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-100">
+                                    <CloudUploadOutlined className="text-blue-600" />
                                 </div>
 
-                                <div>
-                                    <h4 className="text-base font-semibold whitespace-nowrap text-slate-900">
-                                        Easy Upload
-                                    </h4>
-
-                                    <p className="mt-1 text-sm text-slate-500">
-                                        Upload files in seconds
-                                    </p>
-                                </div>
+                                <span className="text-sm font-medium text-slate-700">
+                                    Easy Upload
+                                </span>
                             </div>
 
-                            <div className="flex items-center gap-4 rounded-2xl bg-white/90 backdrop-blur-sm border border-slate-200 p-5 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                                <div className="h-12 w-12 rounded-xl bg-green-100 flex items-center justify-center shrink-0">
-                                    <SafetyCertificateOutlined className="text-[22px] leading-none text-green-600" />
+                            <div className="flex items-center gap-3 rounded-xl border border-white/70 bg-gradient-to-r from-white/80 via-blue-50/80 to-indigo-50/80 backdrop-blur-md px-5 py-3 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-100">
+                                    <SafetyCertificateOutlined className="text-emerald-600" />
                                 </div>
 
-                                <div>
-                                    <h4 className="text-base font-semibold whitespace-nowrap text-slate-900">
-                                        Secure Storage
-                                    </h4>
-
-                                    <p className="mt-1 text-sm text-slate-500">
-                                        Enterprise-grade security
-                                    </p>
-                                </div>
+                                <span className="text-sm font-medium text-slate-700">
+                                    Secure Storage
+                                </span>
                             </div>
 
-                            <div className="flex items-center gap-4 rounded-2xl bg-white/90 backdrop-blur-sm border border-slate-200 p-5 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                                <div className="h-12 w-12 rounded-xl bg-purple-100 flex items-center justify-center shrink-0">
-                                    <FolderOpenOutlined className="text-[22px] leading-none text-purple-600" />
+                            <div className="flex items-center gap-3 rounded-xl border border-white/70 bg-gradient-to-r from-white/80 via-blue-50/80 to-indigo-50/80 backdrop-blur-md px-5 py-3 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-violet-100">
+                                    <FolderOpenOutlined className="text-violet-600" />
                                 </div>
 
-                                <div>
-                                    <h4 className="text-base font-semibold whitespace-nowrap text-slate-900">
-                                        Access Anywhere
-                                    </h4>
-
-                                    <p className="mt-1 text-sm text-slate-500">
-                                        Available on every device
-                                    </p>
-                                </div>
+                                <span className="text-sm font-medium text-slate-700">
+                                    Access Anywhere
+                                </span>
                             </div>
 
                         </div>
-
                     </div>
 
                     {/* RIGHT SIDE */}
