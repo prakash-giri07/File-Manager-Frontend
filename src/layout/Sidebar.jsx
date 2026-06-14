@@ -4,7 +4,6 @@ import { NavLink } from "react-router-dom";
 
 const menuConfig = [
     { key: "home", label: "Home", icon: House, path: "/" },
-    { key: "facebook", label: "Facebook", icon: Facebook, path: "/facebook" },
 ];
 
 const Sidebar = ({ collapsed }) => {

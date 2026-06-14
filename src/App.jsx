@@ -3,7 +3,6 @@ import { useLocation } from "react-router-dom";
 import { List } from "react-bootstrap-icons";
 
 import Sidebar from "./layout/Sidebar";
-import FacebookDashboard from "./pages/FacebookDashboard/FacebookDashboard";
 import Dashboard from "./pages/Dashboard/Dashboard";
 
 function App() {
