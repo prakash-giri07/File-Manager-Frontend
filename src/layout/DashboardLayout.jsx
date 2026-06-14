@@ -40,7 +40,7 @@ function DashboardLayout() {
                         onClick={() => setCollapsed(!collapsed)}
                     />
 
-                    <h5 className="m-0 fw-semibold">File Manager</h5>
+                    <h5 className="m-0 fw-semibold">NexaDrive</h5>
                 </div>
 
                 {/* Content */}

@@ -108,7 +108,7 @@ export default function Hero() {
 
                         <img
                             src="/hero-dashboard.png"
-                            alt="File Manager Dashboard"
+                            alt="NexaDrive Dashboard"
                             className="relative w-full max-w-[950px] h-auto object-contain rounded-[32px] border border-white/80 shadow-[0_40px_120px_rgba(37,99,235,0.25)] transition-all duration-500 hover:scale-[1.02]"
                         />
 

@@ -21,25 +21,27 @@ export default function Navbar() {
 
                         <Link
                             to="/"
-                            className="flex items-center gap-3 no-underline hover:no-underline"
+                            className="flex items-center gap-2 no-underline hover:no-underline"
                             style={{ textDecoration: "none" }}
                         >
                             <div
                                 className="
-                                 h-12 w-12
-                                 rounded-2xl
-                                 bg-blue-600
-                                 flex
-                                 items-center
-                                 justify-center
-                             "
+                           h-14 w-14
+                           rounded-2xl
+                           overflow-hidden
+                           flex items-center justify-center
+                         "
                             >
-                                <CloudUploadOutlined className="text-white text-2xl" />
+                                <img
+                                    src="/nexadrive-logo.png"
+                                    alt="NexaDrive"
+                                    className="w-full h-full object-cover"
+                                />
                             </div>
 
                             <div className="no-underline">
                                 <h4 className="m-0 text-lg font-bold text-slate-900 no-underline">
-                                    File Manager
+                                    NexaDrive
                                 </h4>
                                 <p className="m-0 text-xs text-slate-500 hidden sm:block">
                                     Cloud Storage Platform
@@ -135,7 +137,7 @@ export default function Navbar() {
                 open={open}
                 onClose={() => setOpen(false)}
                 width={280}
-                title="File Manager"
+                title="NexaDrive"
             >
                 <div className="flex flex-col gap-5">
 

@@ -18,25 +18,27 @@ export default function Footer() {
                     {/* Logo */}
                     <Link
                         to="/"
-                        className="flex items-center gap-3 no-underline hover:no-underline"
+                        className="flex items-center gap-2 no-underline hover:no-underline"
                         style={{ textDecoration: "none" }}
                     >
                         <div
                             className="
-                               h-12 w-12
-                               rounded-2xl
-                               bg-blue-600
-                               flex
-                               items-center
-                               justify-center
-                           "
+                    h-14 w-14
+                    rounded-2xl
+                    overflow-hidden
+                    flex items-center justify-center
+                  "
                         >
-                            <CloudUploadOutlined className="text-white text-2xl" />
+                            <img
+                                src="/nexadrive-logo.png"
+                                alt="NexaDrive"
+                                className="w-full h-full object-cover"
+                            />
                         </div>
 
                         <div className="no-underline">
                             <h4 className="m-0 text-lg font-bold text-slate-900 no-underline">
-                                File Manager
+                                NexaDrive
                             </h4>
                             <p className="m-0 text-xs text-slate-500 hidden sm:block">
                                 Cloud Storage Platform
@@ -121,7 +123,7 @@ export default function Footer() {
                 <div className="border-t border-slate-200 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
 
                     <p className="text-sm text-slate-500">
-                        © {new Date().getFullYear()} File Manager. All rights reserved.
+                        © {new Date().getFullYear()} NexaDrive. All rights reserved.
                     </p>
 
                     <div className="flex gap-6 text-sm">

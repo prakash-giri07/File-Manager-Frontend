@@ -117,13 +117,24 @@ export default function Login() {
 
                             {/* Logo */}
                             <div className="flex items-center gap-3 mb-10">
-                                <div className="h-12 w-12 rounded-2xl bg-blue-600 flex items-center justify-center">
-                                    <CloudUploadOutlined className="text-white text-2xl" />
+                                <div
+                                    className="
+                                h-14 w-14
+                                rounded-2xl
+                                overflow-hidden
+                                flex items-center justify-center
+                              "
+                                >
+                                    <img
+                                        src="/nexadrive-logo.png"
+                                        alt="NexaDrive"
+                                        className="w-full h-full object-cover"
+                                    />
                                 </div>
 
                                 <div>
                                     <h4 className="m-0 text-2xl font-bold text-slate-900">
-                                        File Manager
+                                        NexaDrive
                                     </h4>
 
                                     <p className="m-0 text-slate-500 text-sm">

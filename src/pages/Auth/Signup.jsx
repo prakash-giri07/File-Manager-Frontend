@@ -138,20 +138,22 @@ export default function Signup() {
 
                                 <div
                                     className="
-                                    h-12 w-12
-                                    rounded-2xl
-                                    bg-blue-600
-                                    flex
-                                    items-center
-                                    justify-center
-                                "
+                               h-14 w-14
+                               rounded-2xl
+                               overflow-hidden
+                               flex items-center justify-center
+                             "
                                 >
-                                    <CloudUploadOutlined className="text-white text-2xl" />
+                                    <img
+                                        src="/nexadrive-logo.png"
+                                        alt="NexaDrive"
+                                        className="w-full h-full object-cover"
+                                    />
                                 </div>
 
                                 <div>
                                     <h4 className="m-0 text-2xl font-bold">
-                                        File Manager
+                                        NexaDrive
                                     </h4>
 
                                     <p className="m-0 text-slate-500 text-sm">
